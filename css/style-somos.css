@@ -1,0 +1,37 @@
+body {
+    font-family: sans-serif;
+    background-image: url(../IMG/cielo.png);
+    background-color: #14addb;
+  }
+  
+  .section {
+    width: 500px;
+    margin: 100px;
+    padding: 5px;
+    background-color: #619c149f;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #000;
+    font-size: 2em;
+  }
+  
+  img {
+    float: unset;
+    width: 600px;
+    margin: 20px;
+    padding: 10px;
+  }
+  
+  .cuadro1, .cuadro2 {
+    width: 100%;
+    float: right;
+    padding: 10px;
+  }
+  
+  p {
+    color: #000;
+    font-size: 1.5em;
+    text-align: justify
+  }
