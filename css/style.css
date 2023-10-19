@@ -31,3 +31,10 @@ body{
 .titulo-disp {
     font-size: 0.7rem;
   }
+
+.content-container {
+    max-width: 100%;
+    word-wrap: break-word;
+    white-space: normal;
+  }  
+  
