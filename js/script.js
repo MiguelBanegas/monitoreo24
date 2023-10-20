@@ -145,18 +145,27 @@
   });
 
   var datos = [
-    { Nombre: 'Dispositivo A' , Estado: 'Activo', Actualizacion: 'ok' },
-    { Nombre: 'Dispositivo B' , Estado: 'No Activo', Actualizacion: 'ok' },
-    { Nombre: 'Dispositivo C' , Estado: 'Activo',  Actualizacion: ' NO ok' },
+    {Id:1, Nombre: 'Dispositivo A' , Estado: 'Activo', Descripcion: 'sensores zona A' },
+    {Id:2, Nombre: 'Dispositivo B' , Estado: 'No Activo', Descripcion: 'sensores zona B' },
+    {Id:3, Nombre: 'Dispositivo C' , Estado: 'Activo',  Descripcion: 'central alarma C' },
     // Puedes agregar más objetos de datos aquí
   ];
+  var eventos = [
+    {Id: 3, evento:"1 Entrada", fecha:"2023/10/10 10:20:00"},
+    {Id: 3, evento:"1 Entrada", fecha:"2023/10/10 10:10:05"},
+    {Id: 3, evento:"5 Hall", fecha:"2023/10/10 10:00:00"},
+    {Id: 3, evento:"2 Patio trasero", fecha:"2023/10/10 09:20:00"},
+    {Id: 3, evento:"4 perimetral fondo", fecha:"2023/10/10 09:03:00"},
+    {Id: 3, evento:"10 Sabotaje ", fecha:"2023/10/10 09:00:00"},
+  ]
   
   // Función para crear filas de la tabla
   function crearFila(datos) {
     var fila = "<tr>";    
+    fila += "<td>" + datos.Id + "</td>";
     fila += "<td>" + datos.Nombre + "</td>";
     fila += "<td>" + datos.Estado + "</td>";
-    fila += "<td>" + datos.Actualizacion + "</td>";
+    fila += "<td>" + datos.Descripcion + "</td>";
     fila += "</tr>";
     return fila;
   }
@@ -172,7 +181,7 @@
   }
 
 // cargo las celdas de la primer columna de la tabla
-var celdasPrimeraColumna = document.querySelectorAll("#miTabla tbody td:first-child");
+  var celdasPrimeraColumna = document.querySelectorAll("#miTabla tbody td:first-child");
 
   celdasPrimeraColumna.forEach(function(celda) {
       celda.addEventListener('mouseover', () => {
@@ -192,15 +201,44 @@ var celdasPrimeraColumna = document.querySelectorAll("#miTabla tbody td:first-ch
           this.classList.add("resaltado");
     
         const parrafo = document.querySelector("#titGraficos");
-        parrafo.textContent = `Gráficos del Dispositivo: ${textoCelda}`; 
-        temperaturas = []
-        humedades=[]
+        parrafo.textContent = `Dispositivo: ${textoCelda}`; 
+
+        const temp = document.getElementById("canvas-temperatura");        
+        const sel = document.getElementById("select");        
+        const hum = document.getElementById("canvas-humedad");        
+        const selHum = document.getElementById("selectHumedad");
+        const contEventos = document.getElementById("contEventos")
         
-        tempChart.data.datasets[0].data = escalaEnX(opcionPeriodotemperatura);
-        tempChart.update()
-        humedadChart.data.datasets[0].data = escalaEnXhumedad(opcionPeriodoHumedad);
-        humedadChart.update()
-        });
+
+        if (textoCelda==3) {                  
+          
+          temp.style.display = "none";        
+          sel.style.display = "none";       
+          hum.style.display = "none";        
+          selHum.style.display = "none";
+
+          cargarTablaEventos(eventos)
+          // tablaEvent.setAttribute("hidden", false);
+          contEventos.style.display="block"
+
+        } else {
+          contEventos.style.display="none"
+          temp.style.display = "block";        
+          sel.style.display = "block";       
+          hum.style.display = "block";        
+          selHum.style.display = "block";
+         
+          temperaturas = []
+          humedades=[]
+          
+          tempChart.data.datasets[0].data = escalaEnX(opcionPeriodotemperatura);
+          tempChart.update()
+          humedadChart.data.datasets[0].data = escalaEnXhumedad(opcionPeriodoHumedad);
+          humedadChart.update()
+        }
+
+        
+      });
   });
 
   let periodo=0
@@ -238,3 +276,26 @@ var celdasPrimeraColumna = document.querySelectorAll("#miTabla tbody td:first-ch
          }
       return humedades
  }
+ function cargarTablaEventos(datos) {
+ 
+
+  function crearFilaEventos(datos) {
+    var fila = "<tr>";    
+    fila += "<td>" + datos.Id + "</td>";
+    fila += "<td>" + datos.evento + "</td>";
+    fila += "<td>" + datos.fecha + "</td>";
+    fila += "</tr>";
+    return fila;
+  }
+  
+  // Obtener la tabla
+  const tabla = document.getElementById("tablaEventos");
+  var tbody = tabla.querySelector("tbody");
+  tbody.innerHTML = "";
+  
+  // Llenar la tabla con datos del array
+  for (var i = 0; i < datos.length; i++) {
+    var filaHTML = crearFilaEventos(datos[i]);
+    tbody.innerHTML += filaHTML;
+  }
+}
