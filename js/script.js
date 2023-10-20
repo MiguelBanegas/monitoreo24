@@ -299,3 +299,34 @@
     tbody.innerHTML += filaHTML;
   }
 }
+
+/* function traerJsonDePaginaFetch(url) {
+  // Realiza la solicitud HTTP
+  return fetch(url).then(response => response.json())
+}
+// Obtiene el JSON de la página web
+const json = traerJsonDePaginaFetch("https://electroia.piem.ar/movimientos.php?id_esp=1&accion=leer_mediciones_temp_hum")
+
+// Imprime el JSON
+// console.log(json)
+json.then(datos => {
+  // Los datos se han cargado correctamente
+  //console.log(datos);
+  const datosJson = JSON.parse(json)
+
+console.log(datosJson)
+})
+ */
+const json = fetch("https://electroia.piem.ar/movimientos.php?id_esp=1&accion=leer_mediciones_temp_hum")
+  .then(response => response.json());
+
+json.then(datos => {
+  
+  const primeraMedicion = datos[0];
+
+  // Obtiene el valor de la propiedad 'id_esp' de la primera medición
+  const idEsp = primeraMedicion["id_esp"];
+
+  // Imprime el valor de la propiedad 'id_esp'
+  console.log(datos[0].temp);
+});
