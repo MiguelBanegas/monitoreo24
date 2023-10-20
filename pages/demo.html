@@ -11,14 +11,57 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="container m-2 contenedor">
-        <p  class="m-40 text-xs text-center" ><b>Gráficos de Temperatura y Humedad <br>
-        Dispositivo N ° XXX</b>
+    <header  class="container-fluid  contenedor">
+        <div class="container-fluid m-1">
+            <div class="row ">
+                <div class="col-3 border border-red border-2 rounded">
+                    <div class="m-1">
+                        <img src="../img/iot.png" alt="Bootstrap" width="30" height="24">
+                    </div>
+                </div>
+                <div class="col-6 titulo">
+                    <div class="m-1">
+                        <p class=" m-1 titulo"><i class="bi bi-cloud-upload"></i> Soluciones de Telemetría y Control 24 <i class="bi bi-cloud-download"></i></p>
+                    </div>
+                </div>
+                <div class="col-3 titulo border border-red border-2 rounded">
+                    <div class="m-1 titulo-disp">
+                        <p>demo@demo.com</p>
+                        <i class="fa-solid fa-phone"></i>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container  m-1 text-left">
+        <i class="bi bi-cloud-upload"></i> Dispositivos del usuario DEMO <i class="bi bi-cloud-download"></i>
+    </div>
+    <div class="container-fluid  contenedor">
+        
+        <div class="container-fluid m-1">
+            <table id="miTabla">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Estado</th>                    
+                    <th>Actualizacion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+            </table>
+              
+        </div>
+    </div>
+    <div class="container m-2">
+        <p  class="m-1 text-center" id="titGraficos"><b>Gráficos de Dispositivo: "Seleccione Dispositivo"</b>
         </p>
     </div>
     <div class="container-fluid  contenedor">
         <div class="container-fluid m-1 border contenedor">
-            <canvas id="canvas-temperatura" ></canvas>
+            <canvas id="canvas-temperatura" width="350" height="200"></canvas>
             <!-- <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="check1" name="option1" value="something" checked>
                 <label class="form-check-label" for="check1">en horas</label>
@@ -28,15 +71,22 @@
                 <label for="check1">en horas</label>
             </div> -->
             <select id="select">
-                <option value="1">12 horas</option>
-                <option value="2">1 dia</option>
-                <option value="3">semana</option>
+                <option value="1">hora</option>
+                <option value="2">12 horas</option>
+                <option value="3">1 dia</option>
+                <option value="4">semana</option>
             </select>
             
         </div>
         
         <div class="container-fluid m-1 border contenedor">
             <canvas id="canvas-humedad" ></canvas>
+            <select id="selectHumedad">
+                <option value="1">hora</option>
+                <option value="2">12 horas</option>
+                <option value="3">1 dia</option>
+                <option value="4">semana</option>
+            </select>
         </div>
 
         <script src="../js/script.js"></script>

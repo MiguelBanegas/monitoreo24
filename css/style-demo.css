@@ -21,3 +21,41 @@ body{
     row-gap: 1rem;
     column-gap: 1rem;
 }
+.derecha{
+    align-items: flex-end;
+}
+.titulo {
+    align-items:center;
+    justify-content:center;
+    text-align: center;
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: bold;
+  }
+.titulo-disp {
+    font-size: 0.7rem;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th {
+    background-color: #442e78;
+  }
+  th, td {
+    
+    border: 1px solid black;
+    padding: 10px;
+  }
+  
+  tr {
+    background-color: #492c2c;
+  }
+  .resaltado {
+    background-color: blue;
+}
+td:first-child {
+  /* tipo de puntero del mouse en la primera columna */
+  cursor: pointer; 
+
+}
