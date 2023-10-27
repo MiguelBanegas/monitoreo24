@@ -1,5 +1,5 @@
   let temperaturas = []
-  let humedades = [ ]
+  let humedades = []
   let hora=[]
   let medioDia=  []
   let diaEntero= []
@@ -24,7 +24,7 @@
       labels: hora,
       datasets: [
         {
-          label: "Temperatura de 1 hs",
+          label: "Temperatura",
           data: temperaturas,
           backgroundColor: "rgba(50, 0, 0, 1)",
           borderColor: "white",
