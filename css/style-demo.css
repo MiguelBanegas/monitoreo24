@@ -59,3 +59,8 @@ td:first-child {
   cursor: pointer; 
 
 }
+.content-container {
+  max-width: 100%;
+  word-wrap: break-word;
+  white-space: normal;
+}
