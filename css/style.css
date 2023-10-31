@@ -9,6 +9,7 @@ body{
 
 .contenedor {   
     display:flex;
+    
     /* flex-wrap: wrap; */
     flex-flow: row wrap;
     flex-direction: row;
@@ -19,6 +20,9 @@ body{
     /* width: 100vw */
     row-gap: 5px;
     column-gap: 5px;
+}
+.contGraf{
+    background-color:beige;
 }
 .derecha{
     align-items: flex-end;

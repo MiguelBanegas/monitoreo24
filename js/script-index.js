@@ -46,7 +46,7 @@ var tempChart = new Chart(ctx, {
   }
 })
 
-var ctx = document.getElementById("canvas-humedad").getContext("2d");
+var ctx = document.getElementById("canvas-humedad").getContext("2d")
   var humedadChart = new Chart(ctx, {
     type: "bar",
     data: {
@@ -83,4 +83,4 @@ var ctx = document.getElementById("canvas-humedad").getContext("2d");
         }
       }
     }
-  });
+  })
